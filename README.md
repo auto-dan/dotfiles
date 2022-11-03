@@ -1,3 +1,3 @@
 # dotfiles
 
-configs, dotfiles, styling, random stuff that makes "my" environment :D
+updated randomly when I remember to do so
