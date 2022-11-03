@@ -1,0 +1,69 @@
+#=============================================================================
+# file modified from original dark_powered.toml template example
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    colorscheme = "SpaceVim"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # statusline configs
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = true 
+    statusline_separator = "arrow"
+    statusline_iseparator = "arrow"
+    statusline_left_sections = [
+      'winnr',
+      'major mode',
+      'filename',
+      'fileformat',
+      'minor mode lighters',
+      'version control info',
+      'search status'
+    ]
+    statusline_right_sections = [
+      'cursorpos',
+      'percentage',
+      'input method',
+      'date',
+      'time'
+    ]
+    filemanager = "nerdtree"
+    filetree_direction = "left"
+    enable_vimfiler_welcome = false
+    relativenumber=false
+# for icons to play nice, make sure to update font for terminal emulator
+    enable_tabline_filetype_icon = true
+    enable_os_fileformat_icon = true
+    statusline_unicode_symbols = true
+
+# Enable autocomplete layer
+[[layers]]
+name = 'autocomplete'
+auto_completion_return_key_behavior = "complete"
+auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+
+[[layers]]
+name = "lang#python"
+# python_interpreter = "/usr/bin/python3/bin"
+
+[[layers]]
+name = "ui"
+enable_scrollbar = true
+
+[[layers]]
+name = "core#statusline"
+
+[[layers]]
+name = "denite"
