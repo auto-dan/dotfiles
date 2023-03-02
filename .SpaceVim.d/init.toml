@@ -54,7 +54,7 @@
 
 [[layers]]
     name = "ui"
-    enabled_scrollbar = true
+    enabled_scrollbar = false
     enabled_indentline = false
     cursorword_delay = 200
     cursorword_exclude_filetype = ['markdown']
@@ -79,15 +79,6 @@
     name = "lang#html"
 
 [[layers]]
-    name = "lang#typescript"
-
-[[layers]]
-    name = "lang#sh"
-
-[[layers]]
-    name = "lang#sql"
-
-[[layers]]
     name = "lang#json"
 
 [[layers]]
@@ -99,14 +90,8 @@
     name = "colorscheme"
 
 [[layers]]
-    name = "shell"
-    default_position = "right"
-    default_height = 30
-    enable = true
-
-[[layers]]
     name = "ui"
-    enable_scrollbar = true
+    enable_scrollbar = false
 
 [[layers]]
     name = "incsearch"
@@ -114,10 +99,10 @@
 [[layers]]
     name = "denite"
 
-[[layers]]
-    name = "gtags"
-    gtagslabel = "ctags"
-    auto_update = true
+# [[layers]]
+#     name = "gtags"
+#     gtagslabel = "ctags"
+#     auto_update = true
 
 # custom plugins
 [[custom_plugins]]
@@ -126,4 +111,16 @@
 
 [[custom_plugins]]
     repo = "ryanoasis/vim-devicons"
+    merged = false
+
+[[custom_plugins]]
+    repo = "habamax/vim-godot"
+    merged = false
+
+[[custom_plugins]]
+    repo = "junegunn/fzf"
+    merged = false
+
+[[custom_plugins]]
+    repo = "junegunn/fzf.vim"
     merged = false
