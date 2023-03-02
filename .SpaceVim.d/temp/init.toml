@@ -29,8 +29,8 @@
     enable_vimfiler_welcome = true
     enable_vimfiler_filetypeicon = true
 # bootstrapping functions
-    bootstrap_before = "myspacevim#before"
-    bootstrap_after = "myspacevim#after"
+#     bootstrap_before = "myspacevim#before"
+#     bootstrap_after = "myspacevim#after"
 
 # layers
 # language layers
@@ -47,23 +47,21 @@
     name = "core#tabline"
     enabled = true
 
-[[layers]]
-    name = "checkers"
-    line_on_the_fly = true
-    lint_on_save = true
+# [[layers]]
+#     name = "checkers"
+#     line_on_the_fly = true
+#     lint_on_save = true
 
 [[layers]]
     name = "ui"
-    enabled_scrollbar = false
+    enabled_scrollbar = true
     enabled_indentline = false
     cursorword_delay = 200
-    cursorword_exclude_filetype = ['markdown']
 
 [[layers]]
     name = "lang#python"
     enable_typeinfo = true
-    format_on_save = true
-    enabled_linters = ['python', 'pylint'] 
+    enabled_linters = ['pylint'] 
     python_file_head = [
         '# -*- coding: utf-8 -*-',
         '# Author: autodan',
@@ -79,6 +77,12 @@
     name = "lang#html"
 
 [[layers]]
+    name == "lang#json"
+
+[[layers]]
+    name = "lang#sql"
+
+[[layers]]
     name = "lang#json"
 
 [[layers]]
@@ -90,19 +94,12 @@
     name = "colorscheme"
 
 [[layers]]
-    name = "ui"
-    enable_scrollbar = false
-
-[[layers]]
-    name = "incsearch"
-
-[[layers]]
     name = "denite"
 
-[[layers]]
-    name = "gtags"
-    gtagslabel = "pygments"
-    auto_update = true
+# [[layers]]
+#     name = "gtags"
+#     gtagslabel = "ctags"
+#     auto_update = true
 
 # custom plugins
 [[custom_plugins]]
@@ -111,16 +108,4 @@
 
 [[custom_plugins]]
     repo = "ryanoasis/vim-devicons"
-    merged = false
-
-[[custom_plugins]]
-    repo = "habamax/vim-godot"
-    merged = false
-
-[[custom_plugins]]
-    repo = "junegunn/fzf"
-    merged = false
-
-[[custom_plugins]]
-    repo = "junegunn/fzf.vim"
     merged = false
