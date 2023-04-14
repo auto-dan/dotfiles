@@ -5,12 +5,12 @@ env:
 window:
   # Window dimensions (changes require restart)
   dimensions:
-    columns: 96
-    lines: 24
+    columns: 220
+    lines: 60
 
   decorations: none
 
-  opacity: .8
+  opacity: 1
 
   # Window padding (changes require restart)
   padding:
