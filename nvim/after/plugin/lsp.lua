@@ -1,13 +1,18 @@
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
+    lsp.default_keymaps({ buffer = bufnr })
+    lsp.buffer_autoformat()
+
+    vim.keymap.set({ 'n', 'x' }, 'gf', function()
+        vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+    end)
 end)
 
 lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'pyright',
+    'tsserver',
+    'eslint',
+    'lua_ls',
 })
 
 lsp.setup()
