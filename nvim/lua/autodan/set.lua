@@ -7,7 +7,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -23,6 +23,8 @@ vim.cmd [[colorscheme tokyonight-moon]]
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+vim.cmd [[set guicursor:n:blinkon10,i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150]]
 
 vim.opt.updatetime = 50
 
