@@ -119,11 +119,6 @@ _G.packer_plugins = {
     path = "/home/dan/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/dan/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/preservim/nerdtree"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/dan/.local/share/nvim/site/pack/packer/start/nvim-cmp",
