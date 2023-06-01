@@ -14,13 +14,13 @@ return require('packer').startup(function(use)
     }
     use('karb94/neoscroll.nvim')
     use('smithbm2316/centerpad.nvim')
-    use('folke/tokyonight.nvim')
     use('voldikss/vim-floaterm')
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    use('preservim/nerdtree')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -44,6 +44,13 @@ return require('packer').startup(function(use)
     }
     use 'nvim-tree/nvim-web-devicons'
     use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
+    use('folke/tokyonight.nvim')
+    use { 'folke/trouble.nvim',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- addi configs
+        },
+    }
     use {
         "startup-nvim/startup.nvim",
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
