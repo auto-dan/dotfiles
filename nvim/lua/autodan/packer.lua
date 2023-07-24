@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use('github/copilot.vim')
     use('karb94/neoscroll.nvim')
     use('smithbm2316/centerpad.nvim')
     use('voldikss/vim-floaterm')
