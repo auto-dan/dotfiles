@@ -23,3 +23,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>")
 
 vim.keymap.set("n", "<leader>fj", ":%!jq .<CR>")
+
+-- global 'F'ind and 'R'eplace
+-- requires confirmation for each
+vim.keymap.set("n", "<leader>FR", ":%s/\\<<C-r><C-w>\\>//gcI<left><left><left><left>")

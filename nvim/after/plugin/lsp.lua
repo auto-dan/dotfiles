@@ -10,8 +10,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.ensure_installed({
-    'tsserver',
-    'eslint',
     'lua_ls',
 })
 
