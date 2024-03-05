@@ -14,11 +14,9 @@ return require('packer').startup(function(use)
     }
     use('github/copilot.vim')
     use('karb94/neoscroll.nvim')
-    use('smithbm2316/centerpad.nvim')
     use('voldikss/vim-floaterm')
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
-    use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
     use {

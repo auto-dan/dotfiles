@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/dan/.local/share/nvim/site/pack/packer/start/barbar.nvim",
     url = "https://github.com/romgrk/barbar.nvim"
   },
-  ["centerpad.nvim"] = {
-    loaded = true,
-    path = "/home/dan/.local/share/nvim/site/pack/packer/start/centerpad.nvim",
-    url = "https://github.com/smithbm2316/centerpad.nvim"
-  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/dan/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -98,11 +93,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dan/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
-  },
-  harpoon = {
-    loaded = true,
-    path = "/home/dan/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,

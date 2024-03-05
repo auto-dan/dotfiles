@@ -45,11 +45,23 @@ vim.keymap.set("c", "W", "w")
 -- keymap to surround highlighted text with whitespace and curly braces
 -- then move cursor to word and maintain highlighted text
 -- exampleWord -> { exampleWord }
--- scb "space curly brace"
-vim.keymap.set("v", "<leader>scb", "c{<C-r>\"}<Esc>bi<Space><Esc>ea<Space><Esc>")
+-- sscb "surround space curly brace"
+vim.keymap.set("v", "<leader>sscb", "c{<C-r>\"}<Esc>bi<Space><Esc>ea<Space><Esc>")
 -- now just surround with curly braces
-vim.keymap.set("v", "<leader>cb", "c{<C-r>\"}<Esc>")
+-- exampleWord -> {exampleWord}
+-- scb "surround curly brace"
+vim.keymap.set("v", "<leader>scb", "c{<C-r>\"}<Esc>")
 
 -- keymap to surround highlighted text with double quotes
 -- exampleWord -> "exampleWord"
-vim.keymap.set("v", "<leader>dq", "c\"<C-r>\"<Esc>")
+-- sdq "surround double quotes"
+vim.keymap.set("v", "<leader>sdq", "c\"<C-r>\"<Esc>")
+
+-- keymap to surround highlighted text with parentheses
+-- exampleWord -> (exampleWord)
+-- sp "surround parentheses"
+vim.keymap.set("v", "<leader>sp", "c(<C-r>\")<Esc>")
+
+-- keymap for swapping the view of vertical split windows
+-- [s]wap [v]ertical [s]plit
+vim.keymap.set("n", "<leader>svs", "<C-w>h<C-w>K<C-w>L")
