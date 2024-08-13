@@ -37,22 +37,22 @@ ipc_socket = true  # Default: true
 [window]
 
 # Window dimensions
-dimensions = { columns = 165, lines = 40 }  # Default: columns = 0, lines = 0
+dimensions = { columns = 100, lines = 30 }  # Default: columns = 0, lines = 0
 
 # Window startup position
 position = "None"  # Default: "None"
 
 # Padding
-padding = { x = 36, y = 36 }  # Default: x = 0, y = 0
+padding = { x = 30, y = 30 }  # Default: x = 0, y = 0
 
 # Dynamic padding
-dynamic_padding = false  # Default: false
+dynamic_padding = true # Default: false
 
 # Window decorations
-decorations = "None"  # Default: "Full"
+decorations = "none"  # Default: "Full"
 
 # Opacity
-opacity = 1.0  # Default: 1.0
+opacity = 1 # Default: 1.0
 
 # Blur (macOS/KDE Wayland only)
 blur = false # Default: false
@@ -70,7 +70,7 @@ dynamic_title = true  # Default: true
 class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
 
 # Decorations theme variant
-decorations_theme_variant = "None"  # Default: "None"
+decorations_theme_variant = "none"  # Default: "None"
 
 # Resize increments
 resize_increments = false  # Default: false
