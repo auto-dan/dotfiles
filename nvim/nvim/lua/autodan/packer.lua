@@ -19,6 +19,15 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+
+    use {
+        'tpope/vim-dadbod',
+        requires = {
+            { 'kristijanhusak/vim-dadbod-ui' },
+            { 'kristijanhusak/vim-dadbod-completion' },
+        },
+    }
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
