@@ -4,14 +4,15 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
+        -- 'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use('folke/tokyonight.nvim')
+    use('nvim-tree/nvim-web-devicons')
     use('github/copilot.vim')
     use('karb94/neoscroll.nvim')
     use('voldikss/vim-floaterm')
@@ -19,15 +20,6 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-
-    use {
-        'tpope/vim-dadbod',
-        requires = {
-            { 'kristijanhusak/vim-dadbod-ui' },
-            { 'kristijanhusak/vim-dadbod-completion' },
-        },
-    }
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -49,15 +41,8 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },     -- Required
         }
     }
-    use 'nvim-tree/nvim-web-devicons'
-    use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
-    use('folke/tokyonight.nvim')
-    use { 'folke/trouble.nvim',
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            -- addi configs
-        },
-    }
+    use { 'romgrk/barbar.nvim' }
+    use { 'folke/trouble.nvim' }
     use {
         "startup-nvim/startup.nvim",
         requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
