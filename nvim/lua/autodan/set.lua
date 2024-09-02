@@ -18,7 +18,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme tokyonight-night]]
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
