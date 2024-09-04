@@ -65,3 +65,7 @@ vim.keymap.set("v", "<leader>sp", "c(<C-r>\")<Esc>")
 -- keymap for swapping the view of vertical split windows
 -- [s]wap [v]ertical [s]plit
 vim.keymap.set("n", "<leader>svs", "<C-w>h<C-w>K<C-w>L")
+
+-- keymap to go to definition of word under cursor in a vertical split
+-- [v]ertical [s]plit [g]o [d]efinition
+vim.keymap.set("n", "<leader>vsgd", "<C-w>v<C-w>l<C-]>")
