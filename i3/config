@@ -36,7 +36,7 @@ set $ws10 "10"
 # 1 home (default)
 assign [class="Alacritty"] $ws1
 # 2 gaming
-assign [class="steam"] 2
+assign [class="steam"] $ws2
 # 3 dev
 # 4 placeholder
 # 5 placeholder
