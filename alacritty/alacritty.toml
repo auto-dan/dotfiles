@@ -43,13 +43,13 @@ dimensions = { columns = 120, lines = 30 }  # Default: columns = 0, lines = 0
 position = "None"  # Default: "None"
 
 # Padding
-padding = { x = 30, y = 30 }  # Default: x = 0, y = 0
+padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
 
 # Dynamic padding
-dynamic_padding = true # Default: false
+dynamic_padding = false # Default: false
 
 # Window decorations
-decorations = "none"  # Default: "Full"
+decorations = "full"  # Default: "Full"
 
 # Opacity
 opacity = 1 # Default: 1.0
@@ -109,7 +109,7 @@ italic = { style = "Italic" }  # Inherits family from normal, Default style: Ita
 bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default style: Bold Italic
 
 # Font size in points
-size = 18.00  # Default: 11.25
+size = 13  # Default: 11.25
 
 # Offset is extra space around each character
 offset = { x = 0, y = 0 }  # Default: x = 0, y = 0
