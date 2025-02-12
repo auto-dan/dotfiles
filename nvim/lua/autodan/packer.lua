@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('tpope/vim-dadbod')
     use('kristijanhusak/vim-dadbod-ui')
-    use('kristijanhusak/vim-dadbod-completion', { ft = 'sql', 'sqlite3', 'mysql', 'plsql' })
+    use('kristijanhusak/vim-dadbod-completion', { ft = 'psql', 'sql', 'sqlite3', 'mysql', 'plsql' })
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
