@@ -55,23 +55,12 @@ vim.keymap.set("v", "<leader>scb", "c{<C-r>\"}<Esc>")
 -- keymap to surround highlighted text with double quotes
 -- exampleWord -> "exampleWord"
 -- sdq "surround double quotes"
-vim.keymap.set("v", "<leader>sdq", [[<Esc>`<i"<Esc>`>la"<Esc>]], { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>sdq", "c\"<C-r>\"<Esc>")
 
 -- keymap to surround highlighted text with parentheses
 -- exampleWord -> (exampleWord)
 -- sp "surround parentheses"
-vim.keymap.set("v", "<leader>sp", [[<Esc>`<i(<Esc>`>la)<Esc>]], { noremap = true, silent = true })
-
--- keymap to surround highlighted text with square brackets
--- exampleWord -> [exampleWord]
--- ssb "surround square brackets"
-vim.keymap.set("v", "<leader>ssb", [[<Esc>`<i[<Esc>`>la]<Esc>]], { noremap = true, silent = true })
-
--- keymap to surround highlighted text with mustache brackets
--- exampleWord -> {exampleWord}
--- sm "surround mustaches"
-vim.keymap.set("v", "<leader>sm", [[<Esc>`<i{<Esc>`>la}<Esc>]], { noremap = true, silent = true })
-
+vim.keymap.set("v", "<leader>sp", "c(<C-r>\")<Esc>")
 
 -- keymap for swapping the view of vertical split windows
 -- [s]wap [v]ertical [s]plit
