@@ -11,6 +11,21 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use {
+        'rmagatti/auto-session',
+        config = function()
+            require('auto-session').setup {
+                auto_restore_enabled = true,
+                auto_save_enabled = true,
+                auto_session_enable_last_session = true,
+                auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
+                auto_session_enabled = true,
+                auto_save_interval = 18000,
+                auto_restore_last_session = true,
+                auto_session_suppress_dirs = nil
+            }
+        end
+    }
     use('folke/tokyonight.nvim')
     use('nvim-tree/nvim-web-devicons')
     use('github/copilot.vim')
@@ -22,17 +37,15 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('tpope/vim-dadbod')
     use('kristijanhusak/vim-dadbod-ui')
-    use('kristijanhusak/vim-dadbod-completion', { ft = 'sql', 'sqlite3', 'mysql', 'plsql' })
+    use('kristijanhusak/vim-dadbod-completion', { ft = 'psql', 'sql', 'sqlite3', 'mysql', 'plsql' })
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         requires = {
-            -- LSP Support, required
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' }, -- Required
             {
-                'neovim/nvim-lspconfig'
-            },
-            {
-                -- optional
+                -- Optional
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')

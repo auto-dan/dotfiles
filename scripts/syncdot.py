@@ -10,3 +10,9 @@ def test_syncdot():
 def syncdot():
     print("Syncing dotfiles")
 
+
+
+
+
+if __name__ == "__main__":
+    syncdot()
