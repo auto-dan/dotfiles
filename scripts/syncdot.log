@@ -1,1 +1,5 @@
-2025-03-27 11:32:10,238 - syncdot - INFO - syncdot initiated
+2025-03-27 23:07:57,220 - syncdot - INFO - syncdot initiated
+2025-03-27 23:07:57,221 - syncdot - INFO - downloading latest dotfiles from github
+2025-03-27 23:07:58,339 - syncdot - INFO - copying dotfiles to appropriate locations
+2025-03-27 23:07:58,343 - syncdot - INFO - cleaning up
+2025-03-27 23:07:58,346 - syncdot - INFO - {'last_sync': '2025-03-27 23:07:58.346750'}

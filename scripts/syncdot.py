@@ -5,9 +5,11 @@ import json
 from shutil import copyfile
 import datetime
 
+DOWNLOAD_DIR = os.path.expanduser("~/Downloads/dotfiles")
 CONFIG_DIR = os.path.expanduser("~/.config")
-SYNCDOT_CONFIG_DIR = os.path.join(CONFIG_DIR, "syncdot")
-DOTFILES_DIR = os.path.expanduser("~/Documents/github/dotfiles")
+
+GIT_ADDRESS = "https://github.com/auto-dan/dotfiles.git"
+
 LOGGING_LEVEL = logging.INFO
 LOG_PATH = os.path.join("syncdot.log")
 LOGGER = logging.getLogger('syncdot')
@@ -25,38 +27,27 @@ def syncdot():
     # setup logging
     LOGGER.info("syncdot initiated")
 
-    # identify or setup manifest and history
-    manifest_path = os.path.join(SYNCDOT_CONFIG_DIR, "manifest.json")
-    manifest_dict = {}
-
-    # if syncdot config directory doesn't exist, create it
-    if not os.path.exists(SYNCDOT_CONFIG_DIR):
-        LOGGER.info("syncdot config directory does not exist, creating it")
-        os.makedirs(SYNCDOT_CONFIG_DIR)
-
-    # if manifest file doesn't exist, create it
-    if not os.path.exists(manifest_path):
-        LOGGER.info("manifest does not exist, creating it")
-        with open(manifest_path, "w") as f:
-            f.write("{}")
-
     # identify machine in use
-    machine = os.uname().nodename
-    manifest_dict.update({"machine": machine})
+    machine_name = os.uname().nodename
 
-    # review manifest for last sync dttm
+    # create directories if not present
+    if not os.path.exists(DOWNLOAD_DIR):
+        os.makedirs(DOWNLOAD_DIR)
+     
+    # download latest dotfiles from github into source directory
+    LOGGER.info("downloading latest dotfiles from github")
+    os.system(f"git clone {GIT_ADDRESS} {DOWNLOAD_DIR}")
 
-    # pull latest dotfiles from github into source directory
+    # copy dotfiles to appropriate locations
+    LOGGER.info("copying dotfiles to appropriate locations")
+    os.system(f"cp -r {DOWNLOAD_DIR}/* {CONFIG_DIR}/")
+    
+    # clean up
+    LOGGER.info("cleaning up")
+    os.system(f"rm -rf {DOWNLOAD_DIR}")
 
-    # copy dotfiles to target directory
-
-    # update manifest with current dttm
-    manifest_dict.update({"last_sync": f"{datetime.datetime.now()}"})
-
-    # update manifest file
-    # convert to json
-    with open(manifest_path, "w") as manifest_file:
-        manifest_file.write(json.dumps(manifest_dict))
+    # log
+    LOGGER.info({"last_sync": f"{datetime.datetime.now()}"})
 
 # entry
 if __name__ == "__main__":
