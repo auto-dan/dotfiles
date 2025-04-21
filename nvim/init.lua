@@ -1,1 +1,1 @@
-require("autodan")
+require("config.lazy")
