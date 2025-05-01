@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
 require("config.set")
-require("config.remap")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -31,7 +30,10 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "tokyonight-night" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = false },
 })
+
+-- setup remaps
+require("config.remap")
 
 vim.cmd[[colorscheme tokyonight-night]]

@@ -1,3 +1,10 @@
+-- telescope
+vim.keymap.set("n", "<leader>gd", require('telescope.builtin').lsp_definitions, { desc = "Telescope Go to Definition" })
+vim.keymap.set('n', '<leader>ff', ":Telescope find_files<cr>")
+vim.keymap.set('n', '<leader>fw', ":Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>")
+vim.keymap.set('n', '<leader>fh', ":Telescope help_tags<cr>")
+
 -- floaterm
 vim.g.floaterm_width = 90
 vim.g.floaterm_height = 30
@@ -43,10 +50,6 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- file search
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- move lines, then zz to center
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- move lines, then zz to center
 vim.keymap.set("n", "n", "nzzzv")
@@ -121,3 +124,11 @@ vim.keymap.set("n", "<leader>vsgd", "<C-w>v<C-w>l<C-]>")
 -- open float window with diagnostics for current line
 -- [d]iagnostics [i]nfo
 vim.keymap.set("n", "<leader>di", vim.diagnostic.open_float)
+
+-- diagnostics full list
+-- open float window with diagnostics for current buffer, no size limit
+-- [d]iagnostics [l]ist
+vim.keymap.set("n", "<leader>dl", function()
+    vim.diagnostic.setloclist()
+    vim.cmd("lopen")
+end)

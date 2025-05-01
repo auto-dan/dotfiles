@@ -6,8 +6,13 @@ return {
           'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         }
     },
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    "burntsushi/ripgrep",
+    {"nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        require("telescope").setup()
+    end
+    },
     "folke/tokyonight.nvim",
     "nvim-tree/nvim-web-devicons",
     "github/copilot.vim",
