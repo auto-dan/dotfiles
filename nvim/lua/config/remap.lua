@@ -51,6 +51,10 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- better indent 
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- move lines, then zz to center
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -80,6 +84,18 @@ vim.keymap.set("n", "<leader>FR", ":%s/\\<<C-r><C-w>\\>//gcI<left><left><left><l
 
 -- allow :W to write similarly to :w
 vim.keymap.set("c", "W", "w")
+
+-- allow :WA to write all similarly to :wa
+vim.keymap.set("c", "WA", "wa")
+
+-- allow :Q to quit similarly to :q
+vim.keymap.set("c", "Q", "q")
+
+-- allow :WQ to write and quit similarly to :wq
+vim.keymap.set("c", "WQ", "wq")
+
+-- allow :QA to quit all similarly to :qa
+vim.keymap.set("c", "QA", "qa")
 
 -- keymap to surround highlighted text with whitespace and curly braces
 -- then move cursor to word and maintain highlighted text
