@@ -21,7 +21,11 @@ vim.g.netrw_liststyle = 3
 vim.g.netrw_localrmdir = 'rm -r'
 
 -- copilot
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.keymap.set("i", "<C-J>", "copilot#Accept('\\<CR>')", {
+  expr = true,
+  silent = true,
+  replace_keycodes = false,
+})
 vim.keymap.set("n", "<leader>cp", ":Copilot panel<CR>")
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_filetypes = {
@@ -35,6 +39,22 @@ vim.g.copilot_filetypes = {
     ["c++"] = true,
     ["go"] = true,
     ["python"] = true,
+    ["html"] = true,
+    ["css"] = true,
+    ["markdown"] = true,
+    ["json"] = true,
+    ["yaml"] = true,
+    ["toml"] = true,
+    ["dockerfile"] = true,
+    ["bash"] = true,
+    ["sh"] = true,
+    ["fish"] = true,
+    ["php"] = true,
+    ["ruby"] = true,
+    ["swift"] = true,
+    ["kotlin"] = true,
+    ["java"] = true,
+    ["gdscript"] = true
 }
 
 -- barbar
