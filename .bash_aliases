@@ -10,11 +10,16 @@ alias source_qaa='cd ~/Documents/github/lvinspect/ && source venv/bin/activate'
 alias todo='nvim ~/Documents/notes/todo_daily.txt'
 alias notes='nvim ~/Documents/notes/rnd_notes.txt'
 alias start_ddb='cd ~/aws/dynamodb/ && java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb'
-alias clip_vpn='echo -n "KNaVP6pLHnAHGPs!" | xclip -selection clipboard'
-alias start_vpn='echo -n "KNaVP6pLHnAHGPs!" | xclip -selection clipboard && openvpn3 session-start --config ~/Documents/misc/client.ovpn'
+alias clip_vpn='echo -n "snip" | xclip -selection clipboard'
+alias start_vpn='echo -n "snap" | xclip -selection clipboard && openvpn3 session-start --config ~/Documents/misc/client.ovpn'
 alias vim='nvim'
 alias x="exit"
 alias solo_video='xrandr --output eDP-1 --off --output HDMI-1 --auto'
+
+# local network
+alias connect_lpc='echo 'snip' | xclip -selection clipboard && ssh elly@192.168.1.158'
+alias connect_ads='echo 'snap' | xclip -selection clipboard && ssh adserve@192.168.1.190'
+alias connect_nas='smbclient //192.168.1.190/NAS -N'
 
 # color terminal
 # color codes
