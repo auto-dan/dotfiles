@@ -19,16 +19,28 @@ return {
         ensure_installed = {
           "pyright",
           "ts_ls",
+          "rust_analyzer",
         },
         automatic_installation = true,
       })
 
       mason_lspconfig.setup_handlers({
-        -- Use defaults for all LSPs with cmp capabilities
         function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
+          if server_name == "rust_analyzer" then
+            lspconfig.rust_analyzer.setup({
+              capabilities = capabilities,
+              settings = {
+                ["rust-analyzer"] = {
+                  cargo = { allFeatures = true },
+                  chheck = { command = "clippy", },
+                },
+              },
+            })
+          else
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+            })
+          end
         end,
       })
     end,

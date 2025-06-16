@@ -50,3 +50,7 @@ vim.diagnostic.config({
     update_in_insert = true,
     severity_sort = false,
 })
+
+-- copilot
+-- default to false, enable with ':Copilot enable' for inline suggestions
+vim.g.copilot_enabled = false
