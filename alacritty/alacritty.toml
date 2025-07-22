@@ -1,3 +1,27 @@
+# https://alacritty.org/config-alacritty.html
+
+###########
+# GENERAL #
+###########
+
+# Import additional configuration files
+import = []
+
+# Shell program and its arguments
+# Default for Linux/BSD/macOS is $SHELL or user's login shell
+# Default for Windows is "powershell"
+#[shell]
+#program = "/bin/zsh"  # Example for Linux/BSD/macOS
+#args = ["-l"]
+
+# Working directory
+working_directory = "None"  # Default: "None"
+
+# Live config reload (changes require restart)
+live_config_reload = true  # Default: true
+
+# Offer IPC using alacritty msg (unix only)
+ipc_socket = true  # Default: true
 
 #######
 # ENV #
@@ -25,7 +49,7 @@ padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
 dynamic_padding = false # Default: false
 
 # Window decorations
-decorations = "full"  # Default: "Full"
+decorations = "none"  # Default: "Full"
 
 # Opacity
 opacity = 1 # Default: 1.0
@@ -37,10 +61,10 @@ blur = false # Default: false
 startup_mode = "Windowed"  # Default: "Windowed"
 
 # Window title
-title = "terminal"  # Default: "Alacritty"
+title = "Alacritty"  # Default: "Alacritty"
 
 # Dynamic title
-dynamic_title = true  # Default: true
+dynamic_title = false # Default: true
 
 # Window class (Linux/BSD only)
 class = { instance = "Alacritty", general = "Alacritty" }  # Default: instance = "Alacritty", general = "Alacritty"
@@ -73,7 +97,7 @@ multiplier = 3  # Default: 3
 [font]
 
 # Normal font style
-normal = { family = "ubuntu mono", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+normal = { family = "SpaceMono Nerd Font", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
 
 # Bold font style
 bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
@@ -299,29 +323,3 @@ bindings = [
     # { key = "Key", mods = "Modifiers", chars = "Characters to send" },
     # ...
 ]
-
-[general]
-
-# Live config reload (changes require restart)
-live_config_reload = true  # Default: true
-
-# Shell program and its arguments
-# Default for Linux/BSD/macOS is $SHELL or user's login shell
-# Default for Windows is "powershell"
-#[shell]
-#program = "/bin/zsh"  # Example for Linux/BSD/macOS
-#args = ["-l"]
-
-# Working directory
-working_directory = "None"  # Default: "None"
-
-# Offer IPC using alacritty msg (unix only)
-ipc_socket = true  # Default: true
-# https://alacritty.org/config-alacritty.html
-
-###########
-# GENERAL #
-###########
-
-# Import additional configuration files
-import = []

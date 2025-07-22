@@ -1,3 +1,6 @@
+-- refactoring helpers
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'LSP: Rename symbol' })
+
 -- telescope
 vim.keymap.set("n", "<leader>gd", require('telescope.builtin').lsp_definitions, { desc = "Telescope Go to Definition" })
 vim.keymap.set('n', '<leader>ff', ":Telescope find_files<cr>")
@@ -146,7 +149,6 @@ vim.keymap.set("v", "<leader>ssb", [[<Esc>`<i[<Esc>`>la]<Esc>]], { noremap = tru
 -- exampleWord -> {exampleWord}
 -- sm "surround mustaches"
 vim.keymap.set("v", "<leader>sm", [[<Esc>`<i{<Esc>`>la}<Esc>]], { noremap = true, silent = true })
-
 
 -- keymap for swapping the view of vertical split windows
 -- [s]wap [v]ertical [s]plit
