@@ -74,6 +74,9 @@ exec --no-startup-id nm-applet
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# hack to always float chrome
+for_window [class="Google-chrome"] floating enable
+
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar

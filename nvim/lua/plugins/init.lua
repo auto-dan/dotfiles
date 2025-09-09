@@ -77,5 +77,17 @@ return {
       priority = 1000,
       opts = {},
     },
-    { "karb94/neoscroll.nvim", opts = {} }
+    { "karb94/neoscroll.nvim", opts = {} },
+    {
+      "coder/claudecode.nvim",
+      config = function()
+        require("claudecode").setup({
+          window = { position = "bottom", height = 15 }
+        })
+      end,
+      cmd = "ClaudeCode",
+      keys = {
+        { "<leader>cc", "<cmd>ClaudeCode<CR>", desc = "Open Claude Code" }
+      }
+    },
 }
