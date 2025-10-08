@@ -1,0 +1,29 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pipewire", "network", "battery"],
+
+  "clock": {
+    "format": " {:%I:%M %p}"
+  },
+
+  "pipewire": {
+    "format": "{icon} {volume}%",
+    "format-muted": "  muted",
+    "format-icons": ["","",""],
+    "scroll-step": 2
+  },
+
+  "network": {
+    "format-wifi": "  {essid} {signalStrength}%",
+    "format-ethernet": "  {ipaddr}",
+    "format-disconnected": "  Offline"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["","","","",""]
+  }
+}

@@ -10,7 +10,8 @@ return {
     config = function()
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
-      local lspconfig = require("lspconfig")
+      --deprecated
+      --local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       mason.setup()
@@ -27,19 +28,19 @@ return {
       mason_lspconfig.setup_handlers({
         function(server_name)
           if server_name == "rust_analyzer" then
-            lspconfig.rust_analyzer.setup({
-              capabilities = capabilities,
-              settings = {
-                ["rust-analyzer"] = {
-                  cargo = { allFeatures = true },
-                  chheck = { command = "clippy", },
-                },
-              },
-            })
+--            lspconfig.rust_analyzer.setup({
+--              capabilities = capabilities,
+--              settings = {
+--                ["rust-analyzer"] = {
+--                  cargo = { allFeatures = true },
+--                  chheck = { command = "clippy", },
+--                },
+--              },
+--            })
           else
-            lspconfig[server_name].setup({
-              capabilities = capabilities,
-            })
+--            lspconfig[server_name].setup({
+--              capabilities = capabilities,
+--            })
           end
         end,
       })
