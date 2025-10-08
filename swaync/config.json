@@ -1,0 +1,9 @@
+{
+  "style": "~/.config/swaync/style.css",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "popupTimeout": 1400,
+  "widgets": ["title", "body", "actions"]
+}
+

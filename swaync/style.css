@@ -1,0 +1,67 @@
+/* Tokyo Night palette */
+@define-color tn-bg rgba(26, 27, 38, 0.92);   /* #1a1b26 */
+@define-color tn-fg #c0caf5;
+@define-color tn-sub #a9b1d6;
+@define-color tn-accent #7aa2f7;              /* blue */
+@define-color tn-accent2 #bb9af7;             /* purple */
+@define-color tn-urgent #f7768e;              /* red */
+@define-color tn-ok #9ece6a;                  /* green */
+@define-color tn-shadow rgba(0,0,0,0.35);
+
+* {
+  font-family: "JetBrains Mono", "Inter", "Noto Sans", sans-serif;
+  font-size: 11.5pt;
+  -gtk-icon-shadow: none;
+}
+
+/* Notification card */
+.notification {
+  background: @tn-bg;
+  color: @tn-fg;
+  border: 2px solid @tn-accent;
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: 0 12px 28px @tn-shadow;
+  margin: 8px;
+  /* Scale nicely: not too wide, not too narrow */
+  min-width: 240px;
+  max-width: 420px;
+}
+
+/* Title + body */
+.notification .summary { 
+  font-weight: 700; 
+  color: @tn-fg;
+  margin-bottom: 2px;
+  letter-spacing: 0.2px;
+}
+
+.notification .body {
+  color: @tn-sub;
+  line-height: 1.2;
+}
+
+/* Progress bar (for volume/brightness OSD) */
+progressbar, trough { 
+  min-height: 8px;
+  border-radius: 999px;
+}
+
+trough {
+  background: rgba(122,162,247,0.15);
+  border: 1px solid rgba(122,162,247,0.35);
+}
+
+progress {
+  background: linear-gradient(90deg, @tn-accent, @tn-accent2);
+  border-radius: 999px;
+}
+
+/* Urgency styles */
+.notification.critical {
+  border-color: @tn-urgent;
+}
+.notification.low {
+  border-color: @tn-ok;
+}
+
