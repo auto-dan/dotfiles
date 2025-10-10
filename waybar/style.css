@@ -48,3 +48,8 @@ tooltip {
   border: 1px solid @tn-sub;
   border-radius: 6px;
 }
+
+#battery { color: #7aa2f7; }
+#battery.charging { color: #9ece6a; }
+#battery.warning { color: #e0af68; }
+#battery.critical { color: #f7768e; }

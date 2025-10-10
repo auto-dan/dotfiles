@@ -1,67 +1,176 @@
-/* Tokyo Night palette */
-@define-color tn-bg rgba(26, 27, 38, 0.92);   /* #1a1b26 */
-@define-color tn-fg #c0caf5;
-@define-color tn-sub #a9b1d6;
-@define-color tn-accent #7aa2f7;              /* blue */
-@define-color tn-accent2 #bb9af7;             /* purple */
-@define-color tn-urgent #f7768e;              /* red */
-@define-color tn-ok #9ece6a;                  /* green */
-@define-color tn-shadow rgba(0,0,0,0.35);
+/* Tokyo Night Theme for swaync */
 
 * {
-  font-family: "JetBrains Mono", "Inter", "Noto Sans", sans-serif;
-  font-size: 11.5pt;
-  -gtk-icon-shadow: none;
+  all: unset;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
 }
 
-/* Notification card */
+/* Notification window */
 .notification {
-  background: @tn-bg;
-  color: @tn-fg;
-  border: 2px solid @tn-accent;
-  border-radius: 14px;
-  padding: 10px 12px;
-  box-shadow: 0 12px 28px @tn-shadow;
+  background: rgba(26, 27, 38, 0.95);
+  border: 2px solid #7aa2f7;
+  border-radius: 8px;
   margin: 8px;
-  /* Scale nicely: not too wide, not too narrow */
-  min-width: 240px;
-  max-width: 420px;
+  padding: 0;
 }
 
-/* Title + body */
-.notification .summary { 
-  font-weight: 700; 
-  color: @tn-fg;
-  margin-bottom: 2px;
-  letter-spacing: 0.2px;
-}
-
-.notification .body {
-  color: @tn-sub;
-  line-height: 1.2;
-}
-
-/* Progress bar (for volume/brightness OSD) */
-progressbar, trough { 
-  min-height: 8px;
-  border-radius: 999px;
-}
-
-trough {
-  background: rgba(122,162,247,0.15);
-  border: 1px solid rgba(122,162,247,0.35);
-}
-
-progress {
-  background: linear-gradient(90deg, @tn-accent, @tn-accent2);
-  border-radius: 999px;
-}
-
-/* Urgency styles */
 .notification.critical {
-  border-color: @tn-urgent;
-}
-.notification.low {
-  border-color: @tn-ok;
+  border: 2px solid #f7768e;
 }
 
+.notification-content {
+  background: transparent;
+  padding: 12px;
+  margin: 0;
+}
+
+.notification-default-action {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/* App name and close button */
+.notification-row {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-row .notification-action {
+  padding: 8px 12px;
+  background: transparent;
+}
+
+.top-action-title {
+  color: #7aa2f7;
+  font-weight: bold;
+  padding: 8px 12px 0 12px;
+}
+
+.notification-action {
+  background: rgba(122, 162, 247, 0.1);
+  border-radius: 4px;
+  color: #c0caf5;
+  margin: 4px 8px 8px 8px;
+  padding: 8px;
+  border: 1px solid rgba(122, 162, 247, 0.2);
+}
+
+.notification-action:hover {
+  background: rgba(122, 162, 247, 0.2);
+  border: 1px solid #7aa2f7;
+}
+
+/* Summary (title) */
+.summary {
+  color: #c0caf5;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+  padding: 0 12px;
+}
+
+/* Body text */
+.body {
+  color: #a9b1d6;
+  font-size: 14px;
+  padding: 0 12px 8px 12px;
+}
+
+/* Icon */
+.image {
+  margin: 8px 12px;
+  padding: 0;
+}
+
+/* Close button */
+.close-button {
+  background: rgba(247, 118, 142, 0.2);
+  color: #f7768e;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 4px 8px;
+}
+
+.close-button:hover {
+  background: rgba(247, 118, 142, 0.4);
+}
+
+/* Control Center */
+.control-center {
+  background: rgba(26, 27, 38, 0.95);
+  border: 2px solid #7aa2f7;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 12px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.control-center-list-placeholder {
+  color: #565f89;
+  font-size: 16px;
+}
+
+/* Widget Title */
+.widget-title {
+  background: transparent;
+  color: #7aa2f7;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
+.widget-title > button {
+  background: rgba(247, 118, 142, 0.2);
+  color: #f7768e;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: 1px solid rgba(247, 118, 142, 0.3);
+}
+
+.widget-title > button:hover {
+  background: rgba(247, 118, 142, 0.4);
+  border: 1px solid #f7768e;
+}
+
+/* Do Not Disturb widget */
+.widget-dnd {
+  background: transparent;
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+.widget-dnd > switch {
+  background: rgba(86, 95, 137, 0.3);
+  border-radius: 12px;
+  border: 1px solid #565f89;
+}
+
+.widget-dnd > switch:checked {
+  background: rgba(158, 206, 106, 0.3);
+  border: 1px solid #9ece6a;
+}
+
+.widget-dnd > switch slider {
+  background: #c0caf5;
+  border-radius: 50%;
+}
+
+/* Notifications in control center */
+.control-center .notification {
+  background: rgba(36, 40, 59, 0.8);
+  border: 1px solid #414868;
+  margin: 4px 0;
+}
+
+.control-center .notification:hover {
+  background: rgba(54, 74, 130, 0.3);
+  border: 1px solid #7aa2f7;
+}
