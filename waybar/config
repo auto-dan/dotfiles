@@ -1,33 +1,83 @@
 {
   "layer": "top",
   "position": "top",
+  "height": 44,
+  "spacing": 8,
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["pipewire", "network", "battery"],
+  "modules-center": ["clock#time"],
+  "modules-right": ["custom/weather", "clock#date", "tray", "pulseaudio", "network", "battery"],
 
-  "clock": {
-    "format": " {:%I:%M %p}"
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "on-click": "activate",
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 5
+    }
   },
 
-  "pipewire": {
+  "custom/weather": {
+    "exec": "curl -s 'https://wttr.in/?format=%c+%t+%C' | sed 's/+//g'",
+    "interval": 600,
+    "return-type": "",
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "clock#time": {
+    "timezone": "America/New_York",
+    "format": "🕐 {:%I:%M %p}",
+    "tooltip": false
+  },
+
+  "clock#date": {
+    "timezone": "America/New_York",
+    "format": "📅 {:%m/%d/%Y}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+
+  "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": "  muted",
-    "format-icons": ["","",""],
-    "scroll-step": 2
+    "format-muted": "🔇 muted",
+    "format-icons": {
+      "headphone": "🎧",
+      "hands-free": "🎧",
+      "headset": "🎧",
+      "phone": "📱",
+      "portable": "🔊",
+      "car": "🚗",
+      "default": ["🔈", "🔉", "🔊"]
+    },
+    "scroll-step": 2,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip-format": "{desc}"
   },
 
   "network": {
-    "format-wifi": "  {essid} {signalStrength}%",
-    "format-ethernet": "  {ipaddr}",
-    "format-disconnected": "  Offline"
+    "format-wifi": "📡 {essid}",
+    "format-ethernet": "🔌 {ipaddr}",
+    "format-disconnected": "❌ Offline",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
+    "interval": 5
   },
 
   "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
     "format": "{icon} {capacity}%",
     "format-charging": "⚡ {capacity}%",
     "format-plugged": "🔌 {capacity}%",
-    "format-full": "🔋 {capacity}%",
-    "format-icons": ["","","","",""],
-    "interval": 6
+    "format-full": "✅ {capacity}%",
+    "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
+    "tooltip-format": "{timeTo}\nPower: {power}W",
+    "interval": 10
   }
 }
