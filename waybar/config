@@ -78,6 +78,6 @@
     "format-full": "✅ {capacity}%",
     "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
     "tooltip-format": "{timeTo}\nPower: {power}W",
-    "interval": 10
+    "interval": 2
   }
 }
