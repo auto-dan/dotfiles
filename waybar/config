@@ -1,19 +1,19 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 44,
+  "height": 52,
   "spacing": 8,
+  "font": "FiraCode Nerd Font Mono",
+
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock#time"],
-  "modules-right": ["custom/weather", "clock#date", "tray", "pulseaudio", "network", "battery"],
+  "modules-right": ["custom/weather", "custom/temp", "custom/ram", "custom/cpu", "tray", "pulseaudio", "network", "battery"],
 
   "hyprland/workspaces": {
     "format": "{id}",
     "on-click": "activate",
     "sort-by-number": true,
-    "persistent-workspaces": {
-      "*": 5
-    }
+    "persistent-workspaces": { "*": 5 }
   },
 
   "custom/weather": {
@@ -25,15 +25,10 @@
   },
 
   "clock#time": {
-    "timezone": "America/New_York",
-    "format": "🕐 {:%I:%M %p}",
-    "tooltip": false
-  },
-
-  "clock#date": {
-    "timezone": "America/New_York",
-    "format": "📅 {:%m/%d/%Y}",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+      "timezone": "America/New_York",
+      "format": "🕒 {:%I:%M %p}",
+      "tooltip": true,
+      "tooltip-format": "<big>{:%A, %B %e, %Y}</big>"
   },
 
   "tray": {
@@ -42,42 +37,55 @@
   },
 
   "pulseaudio": {
+    "scroll-step": 2,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip-format": "{desc}",
     "format": "{icon} {volume}%",
     "format-muted": "🔇 muted",
     "format-icons": {
-      "headphone": "🎧",
-      "hands-free": "🎧",
-      "headset": "🎧",
-      "phone": "📱",
-      "portable": "🔊",
-      "car": "🚗",
+      "headphones": "🎧",
       "default": ["🔈", "🔉", "🔊"]
-    },
-    "scroll-step": 2,
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "tooltip-format": "{desc}"
+    }
   },
 
   "network": {
-    "format-wifi": "📡 {essid}",
-    "format-ethernet": "🔌 {ipaddr}",
+    "interval": 5,
+    "format-wifi": "📡 {signalStrength}%",
+    "format-ethernet": "🌐 {ipaddr}",
     "format-disconnected": "❌ Offline",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
-    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
-    "interval": 5
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}\n⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}"
   },
 
   "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
+    "interval": 3,
+    "states": { "warning": 25, "critical": 15 },
     "format": "{icon} {capacity}%",
     "format-charging": "⚡ {capacity}%",
-    "format-plugged": "🔌 {capacity}%",
-    "format-full": "✅ {capacity}%",
-    "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
-    "tooltip-format": "{timeTo}\nPower: {power}W",
-    "interval": 2
+    "format-plugged": "⚡ {capacity}%",
+    "format-full": "🔌 full",
+    "format-icons": ["🪫", "🔋", "🔋", "🔋"],
+    "tooltip-format": "{timeTo}\nPower: {power}W"
+  },
+
+  "custom/temp": {
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "exec": "sh -lc 'Z=/sys/class/thermal; T=; for z in $Z/thermal_zone*; do [ -r \"$z/temp\" ] || continue; t=$(cat \"$z/temp\" 2>/dev/null); [ -z \"$t\" ] && continue; [ \"$t\" -gt 1000 ] && t=$((t/1000)); if [ -z \"$T\" ] || [ \"$t\" -gt \"$T\" ]; then T=$t; fi; done; [ -z \"$T\" ] && T=0; if [ $T -ge 85 ]; then ICON=🔥🔥; CLASS=critical; elif [ $T -ge 70 ]; then ICON=🌡️; CLASS=warning; elif [ $T -ge 55 ]; then ICON=🥵; CLASS=warm; else ICON=🌡️; CLASS=ok; fi; printf \"{\\\"text\\\":\\\"%s %s°C\\\",\\\"class\\\":\\\"%s\\\"}\\n\" \"$ICON\" \"$T\" \"$CLASS\"'"
+  },
+
+  "custom/cpu": {
+    "interval": 3,
+    "return-type": "json",
+    "format": "{}",
+    "exec": "sh -lc 'read cpu u1 n1 s1 i1 w1 irq1 sirq1 st1 _ < /proc/stat; idle1=$((i1+w1)); non1=$((u1+n1+s1+irq1+sirq1+st1)); tot1=$((idle1+non1)); sleep 0.5; read cpu u2 n2 s2 i2 w2 irq2 sirq2 st2 _ < /proc/stat; idle2=$((i2+w2)); non2=$((u2+n2+s2+irq2+sirq2+st2)); tot2=$((idle2+non2)); totd=$((tot2-tot1)); idled=$((idle2-idle1)); [ $totd -gt 0 ] || totd=1; pct=$(( (100*(totd-idled)) / totd )); if [ $pct -ge 90 ]; then CLASS=critical; elif [ $pct -ge 75 ]; then CLASS=high; elif [ $pct -ge 50 ]; then CLASS=med; else CLASS=low; fi; printf \"{\\\"text\\\":\\\"⚙️ %s%%\\\",\\\"class\\\":\\\"%s\\\"}\\n\" \"$pct\" \"$CLASS\"'"
+  },
+
+  "custom/ram": {
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "exec": "sh -lc 'total_kb=$(awk \"/MemTotal:/ {print \\$2}\" /proc/meminfo); avail_kb=$(awk \"/MemAvailable:/ {print \\$2}\" /proc/meminfo); used_kb=$((total_kb - avail_kb)); pct=$(( used_kb*100/total_kb )); if [ $pct -ge 90 ]; then CLASS=critical; elif [ $pct -ge 75 ]; then CLASS=high; elif [ $pct -ge 50 ]; then CLASS=med; else CLASS=low; fi; printf \"{\\\"text\\\":\\\"🐏 %s%%\\\",\\\"class\\\":\\\"%s\\\"}\\n\" \"$pct\" \"$CLASS\"'"
   }
 }

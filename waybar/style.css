@@ -1,7 +1,7 @@
+/* -------- Base / Font Stack (GTK-safe) -------- */
 * {
-  font-family: "FiraCode Nerd Font Mono", "Font Awesome 6 Free", "Material Design Icons";
-  font-size: 13px;
-  font-weight: 600;
+  font-family: "FiraCode Nerd Font Mono", "Font Awesome 6 Free", "Material Design Icons", "Noto Color Emoji";
+  font-size: 16px;
   border: none;
   border-radius: 0;
   min-height: 0;
@@ -21,24 +21,31 @@
 @define-color tn-teal #73daca;
 @define-color tn-yellow #e0af68;
 
+/* Bar background with gradient underline */
 window#waybar {
   background: @tn-bg;
   color: @tn-text;
   border-bottom: 3px solid transparent;
-  background-image: linear-gradient(@tn-bg, @tn-bg), linear-gradient(90deg, @tn-cyan 0%, @tn-teal 50%, @tn-lime 100%);
+  background-image: linear-gradient(@tn-bg, @tn-bg),
+                    linear-gradient(90deg, @tn-cyan 0%, @tn-teal 50%, @tn-lime 100%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
 
+/* Container spacing */
 window#waybar > box {
-  margin: 0;
-  padding: 0;
+  margin: 0 6px;
+  padding: 4px 0;
 }
 
-/* Left side - Workspaces */
-#workspaces {
-  padding: 0 10px;
+/* Universal label nudge for glyph baseline */
+label {
+  padding-top: 1px;
+  color: @tn-text;
 }
+
+/* Workspaces */
+#workspaces { padding: 0 8px; }
 
 #workspaces button {
   padding: 6px 10px;
@@ -46,13 +53,12 @@ window#waybar > box {
   background: transparent;
   border-radius: 8px;
   margin: 2px;
-  transition: all 0.3s ease;
 }
 
 #workspaces button.active {
   color: @tn-bg;
   background: linear-gradient(135deg, @tn-cyan 0%, @tn-teal 100%);
-  box-shadow: 0 0 10px rgba(115, 218, 202, 0.4);
+  box-shadow: 0 0 10px rgba(115, 218, 202, 0.35);
   font-weight: 700;
 }
 
@@ -61,27 +67,37 @@ window#waybar > box {
   color: @tn-text;
 }
 
-/* Center modules - Weather, Time, Date */
+/* Center modules */
 #custom-weather,
-#clock.time,
-#clock.date {
-  padding: 6px 14px;
+/* Centered clock pill */
+/* Centered clock pill — rounded + subtle TN gradient */
+#clock.time {
+  padding: 6px 16px;
   margin: 4px;
-  border-radius: 10px;
-  background: @tn-inbg;
-  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 158, 100, 0.15) 0%, rgba(224, 175, 104, 0.15) 100%);
+  border: 1px solid rgba(255, 158, 100, 0.35);
+  color: @tn-orange;
+  font-weight: 700;
+  font-size: 14px;
 }
 
+
+/* If another rule made center modules boxy, this forces the rounded look */
+window#waybar #clock.time > label {
+  border-radius: 12px;
+}
+
+/* Weather pill */
 #custom-weather {
   color: @tn-cyan;
   background: linear-gradient(135deg, rgba(125, 207, 255, 0.15) 0%, rgba(115, 218, 202, 0.15) 100%);
   border: 1px solid rgba(125, 207, 255, 0.3);
 }
 
+/* Time pill */
 #clock.time {
-  padding: 6px 20px;
-  margin: 4px;
-  border-radius: 10px;
+  padding: 6px 16px;
   background: linear-gradient(135deg, rgba(255, 158, 100, 0.15) 0%, rgba(224, 175, 104, 0.15) 100%);
   border: 1px solid rgba(255, 158, 100, 0.3);
   color: @tn-orange;
@@ -89,131 +105,109 @@ window#waybar > box {
   font-size: 14px;
 }
 
+/* Date pill */
 #clock.date {
   color: @tn-purple;
   background: linear-gradient(135deg, rgba(187, 154, 247, 0.15) 0%, rgba(125, 207, 255, 0.15) 100%);
   border: 1px solid rgba(187, 154, 247, 0.3);
 }
 
-/* Right side modules */
+/* Right-side modules (tray, audio, net, battery, temp, ram) */
 #tray,
 #pulseaudio,
 #network,
-#battery {
-  padding: 6px 12px;
+#battery,
+#custom-temp,
+#custom-ram {
+  padding: 6px 10px;
   margin: 4px 2px;
   border-radius: 10px;
   background: @tn-inbg;
   border: 1px solid transparent;
-  transition: all 0.3s ease;
+}
+#custom-cpu {
+  padding: 6px 10px;
+  margin: 4px 2px;
+  border-radius: 10px;
+  background: @tn-inbg;
+  border: 1px solid transparent;
 }
 
-#tray {
-  padding: 6px 8px;
-}
+/* Lift common icon modules a bit */
+#battery, #network, #pulseaudio, #custom-temp, #custom-ram { padding-top: 7px; }
 
-/* System Tray */
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
+/* Tray */
+#tray { padding: 6px 8px; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; color: @tn-pink; }
 
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  color: @tn-pink;
-}
-
-/* Audio Module */
+/* Audio */
 #pulseaudio {
   color: @tn-blue;
   border-color: rgba(122, 162, 247, 0.3);
   background: linear-gradient(135deg, rgba(122, 162, 247, 0.12) 0%, rgba(187, 154, 247, 0.12) 100%);
 }
-
 #pulseaudio:hover {
-  background: linear-gradient(135deg, rgba(122, 162, 247, 0.25) 0%, rgba(187, 154, 247, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(122, 162, 247, 0.24) 0%, rgba(187, 154, 247, 0.24) 100%);
   border-color: @tn-blue;
 }
+#pulseaudio.muted { color: @tn-sub; background: rgba(86, 95, 137, 0.16); }
 
-#pulseaudio.muted {
-  color: @tn-sub;
-  background: rgba(86, 95, 137, 0.15);
-}
-
-/* Network Module */
+/* Network */
 #network {
   color: @tn-cyan;
   border-color: rgba(125, 207, 255, 0.3);
   background: linear-gradient(135deg, rgba(125, 207, 255, 0.12) 0%, rgba(115, 218, 202, 0.12) 100%);
 }
-
 #network:hover {
-  background: linear-gradient(135deg, rgba(125, 207, 255, 0.25) 0%, rgba(115, 218, 202, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(125, 207, 255, 0.24) 0%, rgba(115, 218, 202, 0.24) 100%);
   border-color: @tn-cyan;
 }
+#network.disconnected { color: @tn-pink; background: rgba(247, 118, 142, 0.16); }
 
-#network.disconnected {
-  color: @tn-pink;
-  background: rgba(247, 118, 142, 0.15);
-}
-
-/* Battery Module */
+/* Battery */
 #battery {
   color: @tn-teal;
   border-color: rgba(115, 218, 202, 0.3);
   background: linear-gradient(135deg, rgba(115, 218, 202, 0.12) 0%, rgba(158, 206, 106, 0.12) 100%);
 }
-
 #battery:hover {
-  background: linear-gradient(135deg, rgba(115, 218, 202, 0.25) 0%, rgba(158, 206, 106, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(115, 218, 202, 0.24) 0%, rgba(158, 206, 106, 0.24) 100%);
   border-color: @tn-teal;
 }
-
-#battery.charging {
-  color: @tn-lime;
-  border-color: rgba(158, 206, 106, 0.5);
-  background: linear-gradient(135deg, rgba(158, 206, 106, 0.2) 0%, rgba(115, 218, 202, 0.2) 100%);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-#battery.plugged {
+#battery.charging, #battery.plugged, #battery.full {
   color: @tn-lime;
   border-color: rgba(158, 206, 106, 0.5);
   background: linear-gradient(135deg, rgba(158, 206, 106, 0.2) 0%, rgba(115, 218, 202, 0.2) 100%);
 }
-
-#battery.full {
-  color: @tn-lime;
-  border-color: rgba(158, 206, 106, 0.5);
-  background: linear-gradient(135deg, rgba(158, 206, 106, 0.2) 0%, rgba(115, 218, 202, 0.2) 100%);
-}
-
 #battery.warning {
   color: @tn-yellow;
   border-color: rgba(224, 175, 104, 0.5);
   background: linear-gradient(135deg, rgba(224, 175, 104, 0.2) 0%, rgba(255, 158, 100, 0.2) 100%);
 }
-
 #battery.critical {
   color: @tn-pink;
   border-color: rgba(247, 118, 142, 0.6);
   background: linear-gradient(135deg, rgba(247, 118, 142, 0.3) 0%, rgba(255, 102, 102, 0.3) 100%);
-  animation: pulse 1s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 1;
-    box-shadow: 0 0 15px rgba(158, 206, 106, 0.5);
-  }
-  50% {
-    opacity: 0.85;
-    box-shadow: 0 0 25px rgba(158, 206, 106, 0.7);
-  }
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 15px rgba(158, 206, 106, 0.5);
-  }
-}
+/* Temp states */
+#custom-temp.ok label       { color: @tn-teal; }
+#custom-temp.warm label     { color: @tn-yellow; }
+#custom-temp.warning label  { color: @tn-yellow; }
+#custom-temp.critical label { color: @tn-pink; }
+
+/* RAM states */
+#custom-ram.low label       { color: @tn-teal; }
+#custom-ram.med label       { color: @tn-blue; }
+#custom-ram.high label      { color: @tn-orange; }
+#custom-ram.critical label  { color: @tn-pink; }
+
+/* CPU color gradient (green -> red) */
+#custom-cpu.low    label { color: @tn-lime; }
+#custom-cpu.med    label { color: @tn-yellow; }
+#custom-cpu.high   label { color: @tn-orange; }
+#custom-cpu.critical label { color: @tn-pink; }
 
 /* Tooltips */
 tooltip {
@@ -223,7 +217,4 @@ tooltip {
   border-radius: 10px;
   padding: 10px;
 }
-
-tooltip label {
-  color: @tn-text;
-}
+tooltip label { color: @tn-text; }
