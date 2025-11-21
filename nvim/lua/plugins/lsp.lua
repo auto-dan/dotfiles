@@ -10,12 +10,9 @@ return {
     config = function()
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
-      --deprecated
-      --local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+      
       mason.setup()
-
       mason_lspconfig.setup({
         ensure_installed = {
           "pyright",
@@ -24,29 +21,32 @@ return {
         },
         automatic_installation = true,
       })
-
+      
       mason_lspconfig.setup_handlers({
         function(server_name)
           if server_name == "rust_analyzer" then
---            lspconfig.rust_analyzer.setup({
---              capabilities = capabilities,
---              settings = {
---                ["rust-analyzer"] = {
---                  cargo = { allFeatures = true },
---                  chheck = { command = "clippy", },
---                },
---              },
---            })
+            vim.lsp.config[server_name] = {
+              cmd = { "rust-analyzer" },
+              root_markers = { "Cargo.toml", "rust-project.json" },
+              capabilities = capabilities,
+              settings = {
+                ["rust-analyzer"] = {
+                  cargo = { allFeatures = true },
+                  check = { command = "clippy" },
+                },
+              },
+            }
           else
---            lspconfig[server_name].setup({
---              capabilities = capabilities,
---            })
+            vim.lsp.config[server_name] = {
+              capabilities = capabilities,
+            }
           end
+          vim.lsp.enable(server_name)
         end,
       })
     end,
   },
-
+  
   -- Completion
   {
     "hrsh7th/nvim-cmp",

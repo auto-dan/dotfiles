@@ -3,7 +3,6 @@
   "position": "top",
   "height": 52,
   "spacing": 8,
-  "font": "FiraCode Nerd Font Mono",
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock#time"],
