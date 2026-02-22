@@ -9,7 +9,7 @@
   
   // Modules Layout
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock#time"],
+  //"modules-center": ["clock#time"],
   "modules-right": [
     "custom/mouse", 
     "custom/weather", 
@@ -19,7 +19,8 @@
     "tray", 
     "pulseaudio", 
     "network", 
-    "battery"
+    "battery",
+    "clock#time"
   ],
 
   // Workspaces
@@ -51,7 +52,7 @@
 
   "clock#time": {
     "timezone": "America/New_York",
-    "format": "🕒 {:%I:%M %p}",
+    "format": "🕒 {:%I:%M %p}  ",
     "tooltip-format": "<big>{:%A, %B %e, %Y}</big>"
   },
 
