@@ -7,12 +7,12 @@
     follow = mouse
     padding = 20
     horizontal_padding = 15
-    frame_width = 2
+    frame_width = 3
     frame_color = "#7aa2f7"
     separator_color = frame
-    transparency = 10
-    corner_radius = 6
-    font = DejaVu Sans Mono 18
+    transparency = 15
+    corner_radius = 12
+    font = "JetBrains Mono 18"
     allow_markup = yes
     format = "<b>%s</b>\n%b"
     alignment = center
@@ -23,20 +23,25 @@
     idle_threshold = 120
     indicate_hidden = yes
     shrink = no
+    animation_duration = 300
+    animation_easing = cubic-bezier(0.25, 0.46, 0.45, 0.94)
 
 [urgency_low]
     background = "#1a1b26"
     foreground = "#c0caf5"
     timeout = 3
+    highlight = "#7aa2f7"
 
 [urgency_normal]
     background = "#1a1b26"
     foreground = "#c0caf5"
     frame_color = "#9ece6a"
     timeout = 6
+    highlight = "#73daca"
 
 [urgency_critical]
     background = "#1a1b26"
     foreground = "#f7768e"
     frame_color = "#f7768e"
     timeout = 0
+    highlight = "#ff9e64"
