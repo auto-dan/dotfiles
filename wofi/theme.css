@@ -1,0 +1,39 @@
+window {
+    margin: 0px;
+    border: 1px solid #7aa2f7;      /* Tokyo Night blue accent */
+    background-color: #1e1e2e;       /* Darker base color */
+}
+
+#input {
+    margin: 5px;
+    border: none;
+    color: #abb2bf;                  /* Light gray text */
+    background-color: #282c34;      /* Slightly lighter base */
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: #1e1e2e;     /* Darker base color */
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: #1e1e2e;     /* Darker base color */
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #abb2bf;                  /* Light gray text */
+}
+
+#entry:selected {
+    background-color: #3a4d89;      /* Tokyo Night selection blue */
+}

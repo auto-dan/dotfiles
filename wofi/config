@@ -1,0 +1,11 @@
+# Wofi configuration for centered menu
+# This file controls the menu positioning and behavior
+
+# Use 'center' location (which is default) but with specific alignment
+location = center
+
+# Set width to be more centered
+width = 33%
+
+# Height can be set to fit content nicely
+height = 33%
