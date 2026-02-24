@@ -93,7 +93,7 @@
     "interval": 10,
     "return-type": "json",
     "format": "{}",
-    "exec": "sh -lc 'Z=/sys/class/thermal; T=; for z in $Z/thermal_zone*; do [ -r \"$z/temp\" ] || continue; t=$(cat \"$z/temp\" 2>/dev/null); [ -z \"$t\" ] && continue; [ \"$t\" -gt 1000 ] && t=$((t/1000)); if [ -z \"$T\" ] || [ \"$t\" -gt \"$T\" ]; then T=$t; fi; done; [ -z \"$T\" ] && T=0; if [ $T -ge 85 ]; then ICON=🔥🔥; CLASS=critical; elif [ $T -ge 70 ]; then ICON=🌡️; CLASS=warning; elif [ $T -ge 55 ]; then ICON=🥵; CLASS=warm; else ICON=🌡️; CLASS=ok; fi; printf \"{\\\"text\\\":\\\"%s %s°C\\\",\\\"class\\\":\\\"%s\\\"}\\n\" \"$ICON\" \"$T\" \"$CLASS\"'"
+    "exec": "sh -lc 'f=/sys/class/thermal; T=; for z in $f/thermal_zone*; do [ -r \"$z/type\" ] || continue; type=$(cat \"$z/type\" 2>/dev/null); [ \"$type\" = \"x86_pkg_temp\" ] || continue; t=$(cat \"$z/temp\" 2>/dev/null); [ -z \"$t\" ] && continue; [ \"$t\" -gt 1000 ] && t=$((t/1000)); T=$t; break; done; [ -z \"$T\" ] && T=0; if [ $T -ge 90 ]; then ICON=🔥🔥; CLASS=critical; elif [ $T -ge 80 ]; then ICON=🥵; CLASS=warning; elif [ $T -ge 55 ]; then ICON=🌶️; CLASS=warm; else ICON=🌡️; CLASS=ok; fi; printf \"{\\\"text\\\":\\\"%s %s°C\\\",\\\"class\\\":\\\"%s\\\"}\\n\" \"$ICON\" \"$T\" \"$CLASS\"'"
   },
 
   "custom/cpu": {

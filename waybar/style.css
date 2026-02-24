@@ -7,7 +7,7 @@
 */
 
 * {
-    font-family: "FiraCode Nerd Font Mono", "Font Awesome 6 Free", "Material Design Icons", "Noto Color Emoji";
+    font-family: "FiraCode Nerd Font";
     font-size: 16px; /* Slightly smaller to reduce static bright clusters, still very readable */
     border: none;
     border-radius: 0;
