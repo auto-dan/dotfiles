@@ -158,6 +158,33 @@ vim.keymap.set("n", "<leader>svs", "<C-w>h<C-w>K<C-w>L")
 -- [v]ertical [s]plit [g]o [d]efinition
 vim.keymap.set("n", "<leader>vsgd", "<C-w>v<C-w>l<C-]>")
 
+-- diff current file with another file
+-- [d]iff [f]ile
+vim.keymap.set("n", "<leader>df", function()
+    local current_file = vim.fn.expand('%:p')
+    require('telescope.builtin').find_files({
+        prompt_title = "Select file to diff with " .. vim.fn.expand('%:t'),
+        hidden = true,
+        attach_mappings = function(_, map)
+            map('i', '<CR>', function(prompt_bufnr)
+                local selection = require('telescope.actions.state').get_selected_entry()
+                require('telescope.actions').close(prompt_bufnr)
+                if selection then
+                    vim.cmd('vert diffsplit ' .. vim.fn.fnameescape(selection.path))
+                end
+            end)
+            map('n', '<CR>', function(prompt_bufnr)
+                local selection = require('telescope.actions.state').get_selected_entry()
+                require('telescope.actions').close(prompt_bufnr)
+                if selection then
+                    vim.cmd('vert diffsplit ' .. vim.fn.fnameescape(selection.path))
+                end
+            end)
+            return true
+        end,
+    })
+end, { desc = "Diff current file with another file" })
+
 -- diagnostics info
 -- open float window with diagnostics for current line
 -- [d]iagnostics [i]nfo
