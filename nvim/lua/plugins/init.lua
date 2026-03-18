@@ -15,7 +15,6 @@ return {
     },
     "folke/tokyonight.nvim",
     "nvim-tree/nvim-web-devicons",
-    "github/copilot.vim",
     "karb94/neoscroll.nvim",
     "voldikss/vim-floaterm",
     {

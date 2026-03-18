@@ -10,8 +10,6 @@ return {
     config = function()
       local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
-      --deprecated
-      --local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       mason.setup()
@@ -25,25 +23,23 @@ return {
         automatic_installation = true,
       })
 
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          if server_name == "rust_analyzer" then
---            lspconfig.rust_analyzer.setup({
---              capabilities = capabilities,
---              settings = {
---                ["rust-analyzer"] = {
---                  cargo = { allFeatures = true },
---                  chheck = { command = "clippy", },
---                },
---              },
---            })
-          else
---            lspconfig[server_name].setup({
---              capabilities = capabilities,
---            })
-          end
-        end,
+      -- Configure LSP servers using vim.lsp.config (Neovim 0.11+)
+      vim.lsp.config("*", {
+        capabilities = capabilities,
       })
+
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = { allFeatures = true },
+            check = { command = "clippy" },
+          },
+        },
+      })
+
+      -- Enable configured servers
+      vim.lsp.enable({ "pyright", "ts_ls", "rust_analyzer" })
     end,
   },
 
